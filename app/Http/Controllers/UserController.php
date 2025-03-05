@@ -18,13 +18,19 @@ class UserController extends Controller
         // ];
         // UserModel::insert($data);
 
+        // $data = [
+        //     'nama' => 'Pelangan Pertama',
+        // ];
+
+        // UserModel::where('username', 'customer-1')->update($data);
+
         $data = [
-            'nama' => 'Pelangan Pertama',
+            'level_id' => 2,
+            'username' => 'manager_dua',
+            'nama' => 'manager_dua',
+            'password' => Hash::make('12345')   
         ];
-
-        UserModel::where('username', 'customer-1')->update($data);
-
-        
+        UserModel::create($data);
         $user = UserModel::all();
         return view('user', ['data' => $user]);
     }
