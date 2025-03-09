@@ -11,13 +11,14 @@ class UserController extends Controller
     {
         $user = UserModel::all();
         return view('user', ['data' => $user]);
-
     }
 
-    public function tambah(){
+    public function tambah()
+    {
         return view('user_tambah');
     }
-    public function tambah_simpan(){
+    public function tambah_simpan()
+    {
         UserModel::create([
             'username' => request('username'),
             'nama' => request('nama'),
@@ -26,11 +27,13 @@ class UserController extends Controller
         ]);
         return redirect('user');
     }
-    public function ubah($id){
+    public function ubah($id)
+    {
         $user = UserModel::find($id);
         return view('user_ubah', ['data' => $user]);
     }
-    public function ubah_simpan($id){
+    public function ubah_simpan($id)
+    {
         $user = UserModel::find($id);
 
         $user->username = request('username');
@@ -40,6 +43,14 @@ class UserController extends Controller
         $user->save();
         return redirect('user');
     }
+
+    public function hapus($id)
+    {
+        $user = UserModel::find($id);
+        $user->delete();
+        return redirect('user');
+    }
+
 }
 
         // $user = UserModel::create(
