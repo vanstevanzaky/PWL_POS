@@ -21,7 +21,7 @@
             <td>{{ $dt->username }}</td>
             <td>{{ $dt->nama }}</td>
             <td>{{ $dt->level_id }}</td>
-            <td><a href="/user/ubah/{{ $dt->user_id }}">Ubah"></a> | <a href="/user/hapus/{{ $dt->user_id }}">Hapus</td>
+            <td><a href="user/ubah/{{ $dt->user_id }}">Ubah"></a> | <a href="user/hapus/{{ $dt->user_id }}">Hapus</td>
         </tr>
         @endforeach
     </table>

@@ -26,6 +26,20 @@ class UserController extends Controller
         ]);
         return redirect('user');
     }
+    public function ubah($id){
+        $user = UserModel::find($id);
+        return view('user_ubah', ['data' => $user]);
+    }
+    public function ubah_simpan($id){
+        $user = UserModel::find($id);
+
+        $user->username = request('username');
+        $user->nama = request('nama');
+        $user->password = Hash::make(request('password'));
+        $user->level_id = request('level_id');
+        $user->save();
+        return redirect('user');
+    }
 }
 
         // $user = UserModel::create(
