@@ -13,8 +13,18 @@ class UserController extends Controller
         return view('user', ['data' => $user]);
 
     }
+
     public function tambah(){
         return view('user_tambah');
+    }
+    public function tambah_simpan(){
+        UserModel::create([
+            'username' => request('username'),
+            'nama' => request('nama'),
+            'password' => Hash::make(request('password')),
+            'level_id' => request('level_id')
+        ]);
+        return redirect('user');
     }
 }
 
