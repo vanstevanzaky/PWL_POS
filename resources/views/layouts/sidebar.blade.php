@@ -22,8 +22,8 @@
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
-      <li class="nav-header">Data pengguna
       </li>
+      <li class="nav-header">Data pengguna</li>
       <li class="nav-item">
         <a href="{{ url('/level') }}" class="nav-link {{ $activeMenu == 'level' ? 'active' : '' }}">
           <i class="nav-icon fas fa-layer-group"></i>
@@ -36,7 +36,8 @@
           <p>Data User</p>
         </a>
       </li>
-      </li>
+      
+      <li class="nav-header">Data Barang</li>
       <li class="nav-item">
         <a href="{{'/kategori'}}" class="nav-link {{ $activeMenu == 'kategori' ? 'active' : '' }} ">
           <i class="nav-icon far fa-bookmark"></i>
@@ -50,6 +51,7 @@
             Data Barang
           </p>
         </a>
+      </li>
       <li class="nav-header">Data Transaksi</li>
       <li class="nav-item">
         <a href="{{ url('/stok') }}" class="nav-link {{ ($activeMenu == 'stok') ? 'active' : '' }} ">
@@ -58,7 +60,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'penjualan') ? 'active' : '' }} ">
+        <a href="{{ url('/penjualan') }}" class="nav-link {{ ($activeMenu == 'penjualan') ? 'active' : '' }} ">
           <i class="nav-icon fas fa-cash-register"></i>
           <p>Transaksi Penjualan</p>
         </a>
