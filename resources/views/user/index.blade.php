@@ -9,6 +9,14 @@
             </div>
         </div>
         <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+
             <table class="table table-bordered table-striped table-hover tabel-sm" id="tabel_user">
                 <thead>
                     <tr>
@@ -29,50 +37,50 @@
 @endpush
 
 @push('js')
-<script>
-    $(document).ready(function () {
-        var dataUser = $('#tabel_user').DataTable({
-            serverSide: true,
-            ajax: {
-                "url": "{{ route('user.list') }}",
-                "datatype": "json",
-                "type": "POST"
-            },
-            columns: [
+    <script>
+        $(document).ready(function () {
+            var dataUser = $('#tabel_user').DataTable({
+                serverSide: true,
+                ajax: {
+                    "url": "{{ route('user.list') }}",
+                    "datatype": "json",
+                    "type": "POST"
+                },
+                columns: [
 
-                {
-                    data: "DT_RowIndex",
-                    className: "text-center",
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: "username",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: "nama",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: "level.level_nama",
-                    className: "",
-                    orderable: false,
-                    searchable: true
-                },
-                {
-                    data: "aksi",
-                    className: "",
-                    orderable: false,
-                    searchable: false
-                }
+                    {
+                        data: "DT_RowIndex",
+                        className: "text-center",
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: "username",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "nama",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "level.level_nama",
+                        className: "",
+                        orderable: false,
+                        searchable: true
+                    },
+                    {
+                        data: "aksi",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    }
 
-            ]
+                ]
+            });
         });
-    });
-</script>
+    </script>
 @endpush
