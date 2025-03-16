@@ -50,18 +50,16 @@
             Data Barang
           </p>
         </a>
-      <li class=nav-header> Data Transaksi
-
-      </li>
+      <li class="nav-header">Data Transaksi</li>
       <li class="nav-item">
-        <a href="{{'/stok'}}" class="nav-link {{ $activeMenu == 'stok' ? 'active' : '' }}">
-          <i class="nav-icon far fa-cubes"></i>
+        <a href="{{ url('/stok') }}" class="nav-link {{ ($activeMenu == 'stok') ? 'active' : '' }} ">
+          <i class="nav-icon fas fa-cubes"></i>
           <p>Stok Barang</p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{'/transaksi'}}" class="nav-link {{ $activeMenu == 'transaksi' ? 'active' : '' }}">
-          <i class="nav-icon far fa-cash-register"></i>
+        <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'penjualan') ? 'active' : '' }} ">
+          <i class="nav-icon fas fa-cash-register"></i>
           <p>Transaksi Penjualan</p>
         </a>
       </li>
