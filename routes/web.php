@@ -5,7 +5,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
-use App\Models\SupplierModel;
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,4 +64,15 @@ Route::group(['prefix' => 'supplier'], function () {
     Route::get('/{id}/edit', [SupplierController::class, 'edit'])->name('supplier.edit');
     Route::put('/{id}', [SupplierController::class, 'update'])->name('supplier.update');
     Route::delete('/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+});
+
+Route::group(['prefix' => 'barang'], function () {
+    Route::get('/', [BarangController::class, 'index'])->name('barang.index');
+    Route::post('/list', [BarangController::class, 'list'])->name('barang.list');
+    Route::get('/create', [BarangController::class, 'create'])->name('barang.create');
+    Route::post('/', [BarangController::class, 'store'])->name('barang.store');
+    Route::get('/{id}', [BarangController::class, 'show'])->name('barang.show');
+    Route::get('/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
 });
