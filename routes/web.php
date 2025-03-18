@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\SupplierModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +39,7 @@ Route::group(['prefix' => 'level'], function () {
     Route::post('/list', [LevelController::class, 'list'])->name('level.list');
     Route::get('/create', [LevelController::class, 'create'])->name('level.create');
     Route::post('/', [LevelController::class, 'store'])->name('level.store');
-    Route::get('/{id}', [LevelController::class, 'show'])->name('level.show'); 
+    Route::get('/{id}', [LevelController::class, 'show'])->name('level.show');
     Route::get('/{id}/edit', [LevelController::class, 'edit'])->name('level.edit');
     Route::put('/{id}', [LevelController::class, 'update'])->name('level.update');
     Route::delete('/{id}', [LevelController::class, 'destroy'])->name('level.destroy');
@@ -51,4 +53,15 @@ Route::group(['prefix' => 'kategori'], function () {
     Route::get('/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
     Route::put('/{id}', [KategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+});
+
+Route::group(['prefix' => 'supplier'], function () {
+    Route::get('/', [SupplierController::class, 'index'])->name('supplier.index');
+    Route::post('/list', [SupplierController::class, 'list'])->name('supplier.list');
+    Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create');
+    Route::post('/', [SupplierController::class, 'store'])->name('supplier.store');
+    Route::get('/{id}', [SupplierController::class, 'show'])->name('supplier.show');
+    Route::get('/{id}/edit', [SupplierController::class, 'edit'])->name('supplier.edit');
+    Route::put('/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+    Route::delete('/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
 });
