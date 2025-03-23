@@ -112,6 +112,20 @@ class UserController extends Controller
         }
         redirect('/');
     }
+    public function show_ajax($id)
+    {
+        $user = UserModel::with('level')->find($id);
+    
+        if ($user) {
+            return view('user.show_ajax', ['user' => $user]);
+        }
+    
+        return response()->json(['status' => false, 'message' => 'Data tidak ditemukan']);
+    }
+    
+
+
+
 
     public function edit_ajax(string $id)
     {
@@ -160,12 +174,14 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function confirm_ajax(string $id) {
+    public function confirm_ajax(string $id)
+    {
         $user = UserModel::find($id);
-        return view('user.confirm_ajax', ['user' => $user]);  
+        return view('user.confirm_ajax', ['user' => $user]);
     }
 
-    public function delete_ajax(Request $request, $id) {
+    public function delete_ajax(Request $request, $id)
+    {
         if ($request->ajax() || $request->wantsJson()) {
             $user = UserModel::find($id);
             if ($user) {
@@ -174,12 +190,11 @@ class UserController extends Controller
                     'status'  => true,
                     'message' => 'Data berhasil dihapus'
                 ]);
-
             } else {
                 return response()->json([
                     'status'  => false,
                     'message' => 'Data tidak ditemukan'
-                ]); 
+                ]);
             }
         }
         return redirect('/');
