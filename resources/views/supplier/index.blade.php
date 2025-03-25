@@ -7,6 +7,8 @@
             <h3 class="card-title">Data Supplier</h3>
             <div class="card-tools">
                 <a href="{{ route('supplier.create') }}" class="btn btn-primary">Tambah Data</a>
+                <button onclick="modalAction('{{ route('supplier.create_ajax') }}')"
+                    class="btn btn-success">TambahAjax</button>
             </div>
         </div>
 
@@ -33,7 +35,8 @@
             </table>
         </div>
     </div>
-
+    <div id="myModal" class="modal fade animate shake" tabindex="-1" role="dialog" databackdrop="static"
+        data-keyboard="false" data-width="75%" aria-hidden="true"></div>
 @endsection
 
 @push('css')
@@ -41,8 +44,14 @@
 
 @push('js')
     <script>
+        var dataSupplier;
+        function modalAction(url) {
+            $('#myModal').load(url, function () {
+                $('#myModal').modal('show');
+            });
+        }
         $(document).ready(function () {
-            var dataUser = $('#tabel_supplier').DataTable({
+            dataSupplier = $('#tabel_supplier').DataTable({
                 serverSide: true,
                 ajax: {
                     "url": "{{ route('supplier.list') }}",
