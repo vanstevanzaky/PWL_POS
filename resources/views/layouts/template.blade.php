@@ -33,7 +33,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4 d-flex flex-column">
       <!-- Brand Logo -->
       <a href="{{url('/')}}" class="brand-link">
         <img src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}" 
@@ -44,6 +44,12 @@
       <!-- Sidebar -->
       @include('layouts.sidebar')
       <!-- /.sidebar -->
+      <div class="mt-auto px-3 pb-3">
+        <form method="GET" action="{{ route('logout') }}" class="px-3 pb-3">
+          @csrf
+          <button type="submit" class="btn btn-danger btn-block">Logout</button>
+        </form>
+      </div>
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
