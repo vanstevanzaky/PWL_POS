@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('user/register', [UserController::class, 'createRegistrasi'])->name('register');
+Route::post('user/storeRegister', [UserController::class, 'storeRegistrasi'])->name('storeRegister');
 
 
 
