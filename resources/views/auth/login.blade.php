@@ -53,6 +53,7 @@
             </div>
             <div class="col-4">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <a href="{{route('register')}}" class="btn btn-primary btn-block">Registrasi</a>
             </div>
           </div>
         </form>
