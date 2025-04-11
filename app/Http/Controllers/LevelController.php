@@ -141,7 +141,7 @@ class LevelController extends Controller
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return response()->json([
-                    'status'   => false,    
+                    'status'   => false,
                     'message'  => 'Validasi gagal.',
                     'msgField' => $validator->errors()
                 ]);
@@ -158,19 +158,28 @@ class LevelController extends Controller
         }
         return redirect('/');
     }
-    public function confirm_ajax(string $id){
+    public function confirm_ajax(string $id)
+    {
         $level = LevelModel::find($id);
         return view('level.confirm_ajax', ['level' => $level]);
     }
-    public function delete_ajax(Request $request, $id){
+    public function delete_ajax(Request $request, $id)
+    {
         if ($request->ajax() || $request->wantsJson()) {
             $level = LevelModel::find($id);
             if ($level) {
-                $level->delete();
-                return response()->json([
-                    'status'  => true,
-                    'message' => 'Data berhasil dihapus'
-                ]);
+                try {
+                    $level->delete();
+                    return response()->json([
+                        'status'  => true,
+                        'message' => 'Data berhasil dihapus'
+                    ]);
+                } catch (\Illuminate\Database\QueryException $e) {
+                    return response()->json([
+                        'status'  => false,
+                        'message' => 'Level sedang digunakan dan tidak dapat dihapus'
+                    ]);
+                }
             } else {
                 return response()->json([
                     'status'  => false,
