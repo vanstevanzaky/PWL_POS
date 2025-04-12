@@ -300,7 +300,7 @@ class LevelController extends Controller
                 }
                 return response()->json([
                     'status' => true,
-                    'message' => 'Data berhasil diimport'
+                    'message' => 'Data Level berhasil diimport'
                 ]);
             }else{
                 return response()->json([
