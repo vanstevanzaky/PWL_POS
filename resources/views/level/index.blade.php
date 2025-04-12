@@ -6,6 +6,9 @@
         <div class="card-header">
             <h3 class="card-title">Data Level</h3>
             <div class="card-tools">
+                <button onclick="modalAction('{{ route('level.import') }}')" class="btn btn-success">
+                    Import Level
+                </button>
                 <a href="{{ route('level.create') }}" class="btn btn-primary">Tambah Data</a>
                 <button onclick="modalAction('{{ route('level.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
