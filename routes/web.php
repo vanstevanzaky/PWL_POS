@@ -8,6 +8,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use PhpOffice\PhpSpreadsheet\Worksheet\Row;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,6 +128,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax'])->name('barang.confirm_ajax');
             Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax'])->name('barang.delete_ajax');
             Route::delete('/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+            Route::get('/import', [BarangController::class, 'import'])->name('barang.import');
+            Route::post('/import_ajax', [BarangController::class, 'import_ajax'])->name('barang.import_ajax');
         });
     });
 });
