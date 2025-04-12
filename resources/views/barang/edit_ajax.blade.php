@@ -1,107 +1,134 @@
-@extends('layouts.template')
-@section('content')
-    <div class="card card-outline card-primary">
-        <div class="card-header">
-            <h3 class="card-title">{{ $page->title }}</h3>
-            <div class="card-tools"></div>
-        </div>
-        <div class="card-body">
-            @empty($barang)
-                <div class="alert alert-danger alert-dismissible">
-                    <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
-                    Data yang Anda cari tidak ditemukan.
+@empty($barang)
+    <div id="modal-master" class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kesalahan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <h5><i class="icon fas fa-ban"></i> Kesalahan!!!</h5>
+                    Data yang anda cari tidak ditemukan
                 </div>
-                <a href="{{ url('barang') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
-            @else
-                <form method="POST" action="{{ url('/barang/' . $barang->barang_id) }}" class="form-horizontal">
-                    @csrf
-                    {!! method_field('PUT') !!}
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label">Kode Barang</label>
-                        <div class="col-10">
-                            <input type="text" class="form-control" id="barang_kode" name="barang_kode"
-                                value="{{ old('barang_kode', $barang->barang_kode) }}" required>
-                            @error('barang_kode')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label">Nama Barang</label>
-                        <div class="col-10">
-                            <input type="text" class="form-control" id="barang_nama" name="barang_nama"
-                                value="{{ old('barang_nama', $barang->barang_nama) }}" required>
-                            @error('barang_nama')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label">Kategori</label>
-                        <div class="col-10">
-                            <select class="form-control" id="kategori_id" name="kategori_id" required>
-                                <option value="">- Pilih Kategori -</option>
-                                @foreach($kategori as $item)
-                                    <option value="{{ $item->kategori_id }}" @if($item->kategori_id == old('kategori_id', $barang->kategori_id)) selected @endif>{{ $item->kategori_nama }}</option>
-                                @endforeach
-                            </select>
-                            @error('kategori_id')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label">Harga Beli</label>
-                        <div class="col-10">
-                            <input type="number" class="form-control" id="harga_beli" name="harga_beli"
-                                value="{{ old('harga_beli', $barang->harga_beli) }}" required>
-                            @error('harga_beli')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label">Harga Jual</label>
-                        <div class="col-10">
-                            <input type="number" class="form-control" id="harga_jual" name="harga_jual"
-                                value="{{ old('harga_jual', $barang->harga_jual) }}" required>
-                            @error('harga_jual')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label">Stok</label>
-                        <div class="col-10">
-                            <input type="number" class="form-control" id="stok" name="stok"
-                                value="{{ old('stok', $barang->stok) }}" required>
-                            @error('stok')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 control-label col-form-label"></label>
-                        <div class="col-10">
-                            <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                            <a class="btn btn-sm btn-default ml-1" href="{{ url('barang') }}">Kembali</a>
-                        </div>
-                    </div>
-                </form>
-            @endempty
+                <a href="{{ url('/barang') }}" class="btn btn-warning">Kembali</a>
+            </div>
         </div>
     </div>
-@endsection
+@else
+    <form action="{{ route('barang.update_ajax', $barang->barang_id) }}" method="POST" id="form-edit-barang">
+        @csrf
+        @method('PUT')
+        <div id="modal-master" class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Data Barang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{-- Kode Barang --}}
+                    <div class="form-group">
+                        <label>Kode Barang</label>
+                        <input value="{{ $barang->barang_kode }}" type="text" name="barang_kode" id="barang_kode" class="form-control" required>
+                        <small id="error-barang_kode" class="error-text form-text text-danger"></small>
+                    </div>
 
-@push('css')
-@endpush
+                    {{-- Nama Barang --}}
+                    <div class="form-group">
+                        <label>Nama Barang</label>
+                        <input value="{{ $barang->barang_nama }}" type="text" name="barang_nama" id="barang_nama" class="form-control" required>
+                        <small id="error-barang_nama" class="error-text form-text text-danger"></small>
+                    </div>
 
-@push('js')
-@endpush
+                    {{-- Kategori --}}
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select name="kategori_id" id="kategori_id" class="form-control" required>
+                            <option value="">- Pilih Kategori -</option>
+                            @foreach($kategori as $item)
+                                <option {{ $item->kategori_id == $barang->kategori_id ? 'selected' : '' }} value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
+                            @endforeach
+                        </select>
+                        <small id="error-kategori_id" class="error-text form-text text-danger"></small>
+                    </div>
+
+                    {{-- Harga Beli --}}
+                    <div class="form-group">
+                        <label>Harga Beli</label>
+                        <input value="{{ $barang->harga_beli }}" type="number" name="harga_beli" id="harga_beli" class="form-control" required>
+                        <small id="error-harga_beli" class="error-text form-text text-danger"></small>
+                    </div>
+
+                    {{-- Harga Jual --}}
+                    <div class="form-group">
+                        <label>Harga Jual</label>
+                        <input value="{{ $barang->harga_jual }}" type="number" name="harga_jual" id="harga_jual" class="form-control" required>
+                        <small id="error-harga_jual" class="error-text form-text text-danger"></small>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            $("#form-edit-barang").validate({
+                rules: {
+                    barang_kode: { required: true, minlength: 3 },
+                    barang_nama: { required: true, minlength: 3 },
+                    kategori_id: { required: true, number: true },
+                    harga_beli: { required: true, number: true },
+                    harga_jual: { required: true, number: true },
+                },
+                submitHandler: function (form) {
+                    $.ajax({
+                        url: form.action,
+                        type: form.method,
+                        data: $(form).serialize(),
+                        success: function (response) {
+                            if (response.status) {
+                                $('#myModal').modal('hide');
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message
+                                });
+                                tableBarang.ajax.reload(); 
+                            } else {
+                                $('.error-text').text('');
+                                $.each(response.msgField, function (prefix, val) {
+                                    $('#error-' + prefix).text(val[0]);
+                                });
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Terjadi Kesalahan',
+                                    text: response.message
+                                });
+                            }
+                        }
+                    });
+                    return false;
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+@endempty
