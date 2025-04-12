@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax'])->name('user.confirm_ajax');
         Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax'])->name('user.delete_ajax');
         Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+        Route::get('/import', [UserController::class, 'import'])->name('user.import');
+        Route::post('/import_ajax', [UserController::class, 'import_ajax'])->name('user.import_ajax');
     });
 
     Route::middleware(['authorize:ADM'])->group(function () {
