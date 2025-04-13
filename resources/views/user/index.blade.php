@@ -8,7 +8,7 @@
                 <button onclick="modalAction('{{ route('user.import') }}')" class="btn btn-sm btn-success mt-1">
                     Import Level
                 </button>
-                <a class="btn btn-sm btn-primary mt-1" href="{{ route('user.create') }}">Tambah</a>
+                <a class="btn btn-sm btn-primary mt-1" href="{{ route('user.export_excel') }}">Export User</a>
                 <button onclick= "modalAction('{{ route('user.create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
                     Ajax</button>
             </div>
