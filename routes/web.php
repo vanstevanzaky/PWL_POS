@@ -138,6 +138,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
             Route::get('/import', [BarangController::class, 'import'])->name('barang.import');
             Route::post('/import_ajax', [BarangController::class, 'import_ajax'])->name('barang.import_ajax');
+            Route::get('/export_excel', [BarangController::class, 'export_excel'])->name('barang.export_excel');
         });
     });
 });
