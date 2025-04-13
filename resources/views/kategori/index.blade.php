@@ -9,7 +9,7 @@
                 <button onclick="modalAction('{{ route('kategori.import') }}')" class="btn btn-success">
                     Import Kategori
                 </button>
-                <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('kategori.export_excel') }}" class="btn btn-primary">Export Kategori</a>
                 <button onclick="modalAction('{{ route('kategori.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
             </div>
