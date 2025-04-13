@@ -10,6 +10,7 @@
                     Import Kategori
                 </button>
                 <a href="{{ route('kategori.export_excel') }}" class="btn btn-primary">Export Kategori</a>
+                <a href="{{ route('kategori.export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Kategori PDF</a>
                 <button onclick="modalAction('{{ route('kategori.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
             </div>
