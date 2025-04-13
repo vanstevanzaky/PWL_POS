@@ -9,7 +9,7 @@
                 <button onclick="modalAction('{{ route('supplier.import') }}')" class="btn btn-primary">
                     Import Supplier
                 </button>
-                <a href="{{ route('supplier.create') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('supplier.export_excel') }}" class="btn btn-primary">Export Supplier</a>
                 <button onclick="modalAction('{{ route('supplier.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
             </div>
