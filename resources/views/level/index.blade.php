@@ -10,6 +10,7 @@
                     Import Level
                 </button>
                 <a href="{{ route('level.export_excel') }}" class="btn btn-primary">Export Level</a>
+                <a href="{{ route('level.export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Level PDF</a>
                 <button onclick="modalAction('{{ route('level.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
             </div>
