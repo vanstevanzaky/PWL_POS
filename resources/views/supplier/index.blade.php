@@ -10,6 +10,7 @@
                     Import Supplier
                 </button>
                 <a href="{{ route('supplier.export_excel') }}" class="btn btn-primary">Export Supplier</a>
+                <a href="{{ route('supplier.export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Supplier PDF</a>
                 <button onclick="modalAction('{{ route('supplier.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
             </div>
