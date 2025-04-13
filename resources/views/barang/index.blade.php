@@ -7,7 +7,7 @@
                 <button onclick="modalAction('{{ route('barang.import') }}')" class="btn btn-sm btn-success mt-1">
                     Import Barang
                 </button>
-                <a class="btn btn-sm btn-primary mt-1" href="{{ route('barang.create') }}">Tambah</a>
+                <a class="btn btn-sm btn-primary mt-1" href="{{ route('barang.export_excel') }}">Export Barang</a>
                 <button onclick="modalAction('{{ route('barang.create_ajax') }}')" class="btn btn-sm btn-success mt-1">
                     Tambah Ajax
                 </button>
