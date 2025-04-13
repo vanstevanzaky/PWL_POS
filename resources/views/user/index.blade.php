@@ -9,6 +9,7 @@
                     Import Level
                 </button>
                 <a class="btn btn-sm btn-primary mt-1" href="{{ route('user.export_excel') }}">Export User</a>
+                <a href="{{ route('user.export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export User PDF</a>
                 <button onclick= "modalAction('{{ route('user.create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
                     Ajax</button>
             </div>
