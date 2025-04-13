@@ -9,7 +9,7 @@
                 <button onclick="modalAction('{{ route('level.import') }}')" class="btn btn-success">
                     Import Level
                 </button>
-                <a href="{{ route('level.create') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('level.export_excel') }}" class="btn btn-primary">Export Level</a>
                 <button onclick="modalAction('{{ route('level.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
             </div>
