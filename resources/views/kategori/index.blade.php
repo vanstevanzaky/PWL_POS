@@ -6,6 +6,9 @@
         <div class="card-header">
             <h3 class="card-title">Data Kategori</h3>
             <div class="card-tools">
+                <button onclick="modalAction('{{ route('kategori.import') }}')" class="btn btn-success">
+                    Import Kategori
+                </button>
                 <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Data</a>
                 <button onclick="modalAction('{{ route('kategori.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
