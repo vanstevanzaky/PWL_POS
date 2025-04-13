@@ -6,6 +6,9 @@
         <div class="card-header">
             <h3 class="card-title">Data Supplier</h3>
             <div class="card-tools">
+                <button onclick="modalAction('{{ route('supplier.import') }}')" class="btn btn-primary">
+                    Import Supplier
+                </button>
                 <a href="{{ route('supplier.create') }}" class="btn btn-primary">Tambah Data</a>
                 <button onclick="modalAction('{{ route('supplier.create_ajax') }}')"
                     class="btn btn-success">TambahAjax</button>
