@@ -114,6 +114,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax'])->name('supplier.confirm_ajax');
             Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax'])->name('supplier.delete_ajax');
             Route::delete('/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+            Route::get('/import', [SupplierController::class, 'import'])->name('supplier.import');
+            Route::post('/import_ajax', [SupplierController::class, 'import_ajax'])->name('supplier.import_ajax');
         });
     });
 
