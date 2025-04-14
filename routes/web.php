@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PhpOffice\PhpSpreadsheet\Worksheet\Row;
 
@@ -150,4 +151,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/export_pdf', [BarangController::class, 'export_pdf'])->name('barang.export_pdf');
         });
     });
+
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::put('update', [ProfileController::class, 'updateFoto'])->name('profile.update');
+        Route::delete('remove_foto', [ProfileController::class, 'removeFoto'])->name('profile.remove_foto');
+
+    });
+
 });
