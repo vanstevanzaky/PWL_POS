@@ -12,8 +12,6 @@
   </div>
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-      <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
       <li class="nav-item">
         <a href="{{ url('/') }}" class="nav-link {{ $activeMenu == 'dashboard' ? 'active' : '' }}">
           <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -24,6 +22,13 @@
         </a>
       </li>
       <li class="nav-header">Data pengguna</li>
+      <li class="nav-header">Pengaturan Akun</li>
+      <li class="nav-item">
+        <a href="{{ url('/profile') }}" class="nav-link {{ $activeMenu == 'profile' ? 'active' : '' }}">
+          <i class="nav-icon fas fa-user"></i>
+          <p>Profil Saya</p>
+        </a>
+      </li>
       <li class="nav-item">
         <a href="{{ url('/level') }}" class="nav-link {{ $activeMenu == 'level' ? 'active' : '' }}">
           <i class="nav-icon fas fa-layer-group"></i>
@@ -43,7 +48,7 @@
           <p>Data Supplier</p>
         </a>
       </li>
-      
+
       <li class="nav-header">Data Barang</li>
       <li class="nav-item">
         <a href="{{'/kategori'}}" class="nav-link {{ $activeMenu == 'kategori' ? 'active' : '' }} ">
