@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/export_pdf', [UserController::class, 'export_pdf'])->name('user.export_pdf');
     });
 
-    Route::middleware(['authorize:ADM'])->group(function () {
+    Route::middleware(['authorize:ADM,DIR'])->group(function () {
         Route::group(['prefix' => 'level'], function () {
             Route::get('/', [LevelController::class, 'index'])->name('level.index');
             Route::post('/list', [LevelController::class, 'list'])->name('level.list');
@@ -83,7 +83,7 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::middleware(['authorize:ADM,STF'])->group(function(){
+    Route::middleware(['authorize:ADM,STF,DIR'])->group(function(){
         Route::group(['prefix' => 'kategori'], function () {
             Route::get('/', [KategoriController::class, 'index'])->name('kategori.index');
             Route::post('/list', [KategoriController::class, 'list'])->name('kategori.list');
@@ -105,7 +105,7 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::middleware(['authorize:MNG,STF'])->group(function(){
+    Route::middleware(['authorize:MNG,STF,DIR'])->group(function(){
         Route::group(['prefix' => 'supplier'], function () {
             Route::get('/', [SupplierController::class, 'index'])->name('supplier.index');
             Route::post('/list', [SupplierController::class, 'list'])->name('supplier.list');
@@ -129,7 +129,7 @@ Route::middleware('auth')->group(function () {
     });
 
 
-    Route::middleware(['authorize:ADM,MNG'])->group(function () {
+    Route::middleware(['authorize:ADM,MNG,DIR'])->group(function () {
         Route::group(['prefix' => 'barang'], function () {
             Route::get('/', [BarangController::class, 'index'])->name('barang.index');
             Route::post('/list', [BarangController::class, 'list'])->name('barang.list');
@@ -154,8 +154,8 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-        Route::put('update', [ProfileController::class, 'updateFoto'])->name('profile.update');
-        Route::delete('remove_foto', [ProfileController::class, 'removeFoto'])->name('profile.remove_foto');
+        Route::put('/update', [ProfileController::class, 'updateFoto'])->name('profile.update');
+        Route::delete('/remove_foto', [ProfileController::class, 'removeFoto'])->name('profile.remove_foto');
 
     });
 
