@@ -40,3 +40,11 @@ Route::post('kategoris', [App\Http\Controllers\Api\KategoriController::class, 's
 Route::get('kategoris/{kategori}', [App\Http\Controllers\Api\KategoriController::class, 'show']);
 Route::put('kategoris/{kategori}', [App\Http\Controllers\Api\KategoriController::class, 'update']);
 Route::delete('kategoris/{kategori}', [App\Http\Controllers\Api\KategoriController::class, 'destroy']);
+
+Route::get('barangs', [App\Http\Controllers\Api\BarangController::class, 'index']);
+Route::post('barangs', [App\Http\Controllers\Api\BarangController::class, 'store']);
+Route::get('barangs/{barang}', [App\Http\Controllers\Api\BarangController::class, 'show']);
+Route::put('barangs/{barang}', [App\Http\Controllers\Api\BarangController::class, 'update']);
+Route::delete('barangs/{barang}', [App\Http\Controllers\Api\BarangController::class, 'destroy']);
+
+
