@@ -34,3 +34,9 @@ Route::post('users', [App\Http\Controllers\Api\UserController::class, 'store']);
 Route::get('users/{user}', [App\Http\Controllers\Api\UserController::class, 'show']);
 Route::put('users/{user}', [App\Http\Controllers\Api\UserController::class, 'update']);
 Route::delete('users/{user}', [App\Http\Controllers\Api\UserController::class, 'destroy']);
+
+Route::get('kategoris', [App\Http\Controllers\Api\KategoriController::class, 'index']);
+Route::post('kategoris', [App\Http\Controllers\Api\KategoriController::class, 'store']);
+Route::get('kategoris/{kategori}', [App\Http\Controllers\Api\KategoriController::class, 'show']);
+Route::put('kategoris/{kategori}', [App\Http\Controllers\Api\KategoriController::class, 'update']);
+Route::delete('kategoris/{kategori}', [App\Http\Controllers\Api\KategoriController::class, 'destroy']);
